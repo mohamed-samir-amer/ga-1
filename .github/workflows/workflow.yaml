@@ -4,8 +4,9 @@ on: push
 
 jobs:
     mohamed:
-        runs-on: ubuntu-latest
-        steps:
+      needs:  mohamed2
+      runs-on: ubuntu-latest
+      steps:
             - name: checkout 
               uses: actions/checkout@v4
             - name: Welcome 
@@ -15,8 +16,21 @@ jobs:
                 sudo apt install cowsay -y
                 cowsay -f dragon "Run for cover, I am a DRAGON....RAWR" >> dragon.txt
                 cat dragon.txt
+                sleep 15
 
             - name: show read me
               run: |
                 ls -ltrah
                 cat README.md
+    mohamed2: 
+      runs-on: ubuntu-latest
+      steps: 
+          - name: show read me 
+            run: | 
+              chmod +x script.sh 
+              ./script.sh
+              sleep 15
+
+
+
+              
