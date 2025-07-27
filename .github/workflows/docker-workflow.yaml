@@ -7,7 +7,7 @@ on:
 
 env:
   CONTAINER_REGISTRY: "${{ vars.CONTAINER_REGISTRY }}"
-  IMAGE_NAME: mohamed-samer
+  IMAGE_NAME: mohamed-samer-amer
 
 jobs:
   docker:
