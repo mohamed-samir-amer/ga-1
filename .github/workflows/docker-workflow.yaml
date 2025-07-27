@@ -1,0 +1,30 @@
+name: Docker Build and Push
+
+on:
+  push:
+    branches:
+      - main
+
+env:
+  CONTAINER_REGISTRY: "${{ vars.CONTAINER_REGISTRY }}"
+  IMAGE_NAME: mohamed-samer
+
+jobs:
+  docker:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Docker Build
+        run: |
+          docker build -t ${{ env.CONTAINER_REGISTRY }}/${{ env.IMAGE_NAME }}:latest .
+
+      - name: Docker Login
+        run: |
+          echo "${{ secrets.ACR_PASSWORD }}" | docker login ${{ env.CONTAINER_REGISTRY }} -u "${{ secrets.ACR_USERNAME }}" --password-stdin
+
+      - name: Docker Push
+        run: |
+          docker push ${{ env.CONTAINER_REGISTRY }}/${{ env.IMAGE_NAME }}:latest
