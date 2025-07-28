@@ -1,10 +1,7 @@
 name: Docker Build and Push
 
 on:
-  push:
-    branches:
-      - main
-
+  workflow_dispatch:
 env:
   CONTAINER_REGISTRY: "${{ vars.CONTAINER_REGISTRY }}"
   IMAGE_NAME: mohamed-samer-amer
