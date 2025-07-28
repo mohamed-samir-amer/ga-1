@@ -1,6 +1,7 @@
 name: Docker Build and Push
 
 on:
+  
   workflow_dispatch:
 env:
   CONTAINER_REGISTRY: "${{ vars.CONTAINER_REGISTRY }}"
